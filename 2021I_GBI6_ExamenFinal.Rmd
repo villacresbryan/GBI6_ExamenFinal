@@ -161,7 +161,18 @@ tcga_boxplots(df_long)
 ```{r list_boxplots}
 # Escriba el código para generar la lista. 
 
+cancertype <- list(
+  BRCA <- filter(df_long, dataset == "BRCA"),
+  OV <- filter(df_long, dataset == "OV"),
+  LUSC <- filter(df_long, dataset == "LUSC"),
+  KIPAN <- filter(df_long, dataset == "KIPAN"),
+  KIRP <- filter(df_long, dataset == "KIRP"),
+  UCEC <- filter(df_long, dataset == "UCEC")
+)
 
+cancertype_boxplots = lapply(cancertype, function(x) {ggplot(x, aes(dataset, expresion_level, col = dataset)) +
+    geom_boxplot() + theme(legend.position='none') + labs(x = "", y = "Expression level")})
+cancertype_boxplots
 ```
 
 ### [0.5 PUNTOS] 2.3 Guarde en el subdirectorio ```result``` el tercer plot de la lista ```cancertype_boxplots``` con el nombre ```boxplot3.png```. La definición de a figura debe ser de 300dpi. 
