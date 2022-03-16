@@ -3362,11 +3362,400 @@ div.tocify {
 </div>
 <div id="puntos-1.5-a-partir-de-la-data-df_long-genere-un-descriptive-table-librería-sjplot-y-guárdelo-en-el-subdirectorio-result-con-el-nombre-mrna_expr_summary.doc-previamente-debe-seleccionar-las-celdas-adecuadas-con-funciones-de-la-librería-dplyr-en-conjunto-con-el-operador-." class="section level3">
 <h3>[0.5 PUNTOS] 1.5 A partir de la data <code>df_long</code>, genere un <strong>Descriptive table</strong> (librería <code>sjPlot</code>) y guárdelo en el subdirectorio “result” con el nombre <strong>mRNA_expr_summary.doc</strong> (previamente debe seleccionar las celdas adecuadas con funciones de la librería <code>dplyr</code> en conjunto con el operador <code>%&gt;%</code>).</h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Escriba el código para crear el Descriptive table </span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Escriba el código para crear el Descriptive table </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span></code></pre></div>
+<pre><code>## Warning: package &#39;sjPlot&#39; was built under R version 4.1.3</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjmisc)</span></code></pre></div>
+<pre><code>## Warning: package &#39;sjmisc&#39; was built under R version 4.1.3</code></pre>
+<pre><code>## 
+## Attaching package: &#39;sjmisc&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
+## 
+##     replace_na</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>cancer_mama <span class="ot">&lt;-</span> prueba <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(gen) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">row =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> gen, <span class="at">values_from =</span> expresion_level) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>row)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">descr</span>(cancer_mama) <span class="sc">%&gt;%</span> <span class="fu">tab_df</span>(<span class="at">title =</span> <span class="st">&quot;Estadistica descriptiva del cancer de MAMA y su nivel de expresion de los diferentes genes&quot;</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                              <span class="at">file =</span> <span class="st">&quot;mRNA_expr_summary.doc&quot;</span>) </span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<caption style="font-weight: bold; text-align:left;">
+Estadistica descriptiva del cancer de MAMA y su nivel de expresion de los diferentes genes
+</caption>
+<tr>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; text-align:left; ">
+var
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; ">
+type
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; ">
+label
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; ">
+n
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; ">
+NA.prc
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; ">
+mean
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; col7">
+sd
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; col8">
+se
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; col9">
+md
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; 0">
+trimmed
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; 1">
+range
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; 2">
+iqr
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; 3">
+skew
+</th>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+dataset
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+categorical
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+dataset
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+1463
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+0
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+3.12
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col7">
+1.91
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col8">
+0.05
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col9">
+4.00
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 0">
+3.10
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 1">
+5 (1-6)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 2">
+4.00
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 3">
+-0.06
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+GATA3
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+numeric
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+GATA3
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+1463
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+0
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+-2.00
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col7">
+2.87
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col8">
+0.07
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col9">
+-3.50
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 0">
+-2.19
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 1">
+9.96 (-6.03-3.93)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 2">
+5.59
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 3">
+0.57
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+PTEN
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+numeric
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+PTEN
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+1463
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+0
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+0.60
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col7">
+0.74
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col8">
+0.02
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col9">
+0.70
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 0">
+0.65
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 1">
+5.55 (-2.75-2.8)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 2">
+0.88
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 3">
+-0.82
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+XBP1
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+numeric
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+XBP1
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+1463
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+0
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+0.23
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col7">
+1.74
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col8">
+0.05
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col9">
+-0.18
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 0">
+0.16
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 1">
+8.05 (-3.32-4.74)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 2">
+2.91
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 3">
+0.39
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+ESR1
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+numeric
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+ESR1
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+1463
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+0
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+1.09
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col7">
+2.63
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col8">
+0.07
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col9">
+1.66
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 0">
+1.22
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 1">
+11.31 (-5.2-6.11)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 2">
+4.09
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 3">
+-0.49
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+MUC1
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+numeric
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+MUC1
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+1463
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+0
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+1.74
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col7">
+1.45
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col8">
+0.04
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col9">
+2.06
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 0">
+1.87
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 1">
+7.89 (-3.32-4.56)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 2">
+1.91
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 3">
+-0.77
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+FN1
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+numeric
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+FN1
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+1463
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+0
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+-0.89
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col7">
+1.44
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col8">
+0.04
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col9">
+-0.91
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 0">
+-0.91
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 1">
+7.3 (-4.06-3.23)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 2">
+2.40
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; 3">
+0.11
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; border-bottom: double; ">
+GAPDH
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; ">
+numeric
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; ">
+GAPDH
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; ">
+1463
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; ">
+0
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; ">
+-0.97
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; col7">
+0.68
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; col8">
+0.02
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; col9">
+-1.02
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; 0">
+-0.99
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; 1">
+5.12 (-3.12-2)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; 2">
+0.90
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; 3">
+0.27
+</td>
+</tr>
+</table>
 </div>
 <div id="puntos-1.6-interprete-los-resultados-de-la-tabla-resultante-de-la-sección-1.5." class="section level3">
 <h3>[0.5 PUNTOS] 1.6 Interprete los resultados de la tabla resultante de la sección 1.5.</h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a># Escriba aquí su interpretación </span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a># Escriba aquí su interpretación </span></code></pre></div>
 </div>
 </div>
 <div id="pregunta-2-visualizacion-de-datos-5-puntos" class="section level2">
@@ -3374,31 +3763,31 @@ div.tocify {
 <p>Para esta pregunta tiene que utilizar la data <code>df_long</code>.</p>
 <div id="punto-2.1-cree-la-funcion-tcga_boxplots-para-visualizar-boxplots-y-jitterplots.-el-único-parámetro-de-la-función-es-dataset.-la-función-debe-crear-un-boxplot-de-los-niveles-de-expresión-para-cada-gen." class="section level3">
 <h3>[1 PUNTO] 2.1 Cree la funcion <code>tcga_boxplots</code> para visualizar boxplots y jitterplots. El único parámetro de la función es <code>dataset</code>. La función debe crear un boxplot de los niveles de expresión para cada gen.</h3>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Escriba el código para crear la función tcga_boxplots</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Escriba el código para crear la función tcga_boxplots</span></span></code></pre></div>
 </div>
 <div id="puntos-2.2-utilizando-la-función-lapply-genera-la-lista-cancertype_boxplots-con-las-gráficas-para-cada-tipo-de-cancer-cada-tipo-de-dataset." class="section level3">
 <h3>[0.5 PUNTOS] 2.2 Utilizando la función <code>lapply()</code> genera la lista <code>cancertype_boxplots</code> con las gráficas para cada tipo de cancer (cada tipo de dataset).</h3>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Escriba el código para generar la lista. </span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Escriba el código para generar la lista. </span></span></code></pre></div>
 </div>
 <div id="puntos-2.3-guarde-en-el-subdirectorio-result-el-tercer-plot-de-la-lista-cancertype_boxplots-con-el-nombre-boxplot3.png.-la-definición-de-a-figura-debe-ser-de-300dpi." class="section level3">
 <h3>[0.5 PUNTOS] 2.3 Guarde en el subdirectorio <code>result</code> el tercer plot de la lista <code>cancertype_boxplots</code> con el nombre <code>boxplot3.png</code>. La definición de a figura debe ser de 300dpi.</h3>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Escriba el código para guardar la tercera figura de la lista. </span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Escriba el código para guardar la tercera figura de la lista. </span></span></code></pre></div>
 </div>
 <div id="punto-2.4-escriba-la-función-reg_gen_expression-con-el-parámetro-gen.-en-este-caso-la-función-visualizará-una-gráfica-de-nube-de-puntos-geom_point-y-una-regresión-por-tipo-de-dataset.-la-gráfica-será-de-comparación-de-gen1-con-gen2-por-ejemplo-en-el-eje-x-gata3-y-en-el-eje-y-fn1." class="section level3">
 <h3>[1 PUNTO] 2.4 Escriba la función <code>reg_gen_expression</code>, con el parámetro <code>gen</code>. En este caso la función visualizará una gráfica de nube de puntos (geom_point) y una regresión por tipo de “dataset”. La gráfica será de comparación de gen1 con gen2; por ejemplo en el eje “x” <code>GATA3</code> y en el eje “y”” <code>FN1</code>.</h3>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Escriba aquí su función reg_gen_expression</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Escriba aquí su función reg_gen_expression</span></span></code></pre></div>
 </div>
 <div id="puntos-2.5.-utilizando-la-función-lapply-genera-la-lista-reg_genplots-con-las-gráficas-para-cada-par-de-genes-posibles.-recuerde-que-tiene-7-tipos-de-genes-se-debe-tener-todas-las-combinaciones-posibles-por-pares-de-genes-combinatoria-sin-repetición." class="section level3">
 <h3>[0.5 PUNTOS] 2.5. Utilizando la función <code>lapply()</code> genera la lista <code>reg_genplots</code> con las gráficas para cada par de genes posibles. Recuerde que tiene 7 tipos de genes, se debe tener todas las combinaciones posibles por pares de genes (combinatoria sin repetición).</h3>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Escriba el código para generar la lista. </span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Escriba el código para generar la lista. </span></span></code></pre></div>
 </div>
 <div id="puntos-2.6.-guarde-en-el-subdirectorio-result-el-onceavo-plot-de-la-lista-reg_genplots-con-el-nombre-regresion11.pdf.-la-definición-de-a-figura-debe-ser-de-300dpi." class="section level3">
 <h3>[0.5 PUNTOS] 2.6. Guarde en el subdirectorio <code>result</code> el onceavo plot de la lista <code>reg_genplots</code> con el nombre <code>regresion11.pdf</code>. La definición de a figura debe ser de 300dpi.</h3>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Escriba el código para guardar el onceavo plot. </span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Escriba el código para guardar el onceavo plot. </span></span></code></pre></div>
 </div>
 <div id="punto-2.7.-interprete-los-resultados-de-las-figuras-boxplot3.png-y-regresion11.pdf." class="section level3">
 <h3>[1 PUNTO] 2.7. Interprete los resultados de las figuras <code>boxplot3.png</code> y <code>regresion11.pdf</code>.</h3>
-<div class="sourceCode" id="cb20"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a># Esciba aquí su intepretación</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a># Esciba aquí su intepretación</span></code></pre></div>
 </div>
 </div>
 <div id="control-de-la-versión-1-punto.-se-verficará-en-ell-repositorio-de-github." class="section level2">
