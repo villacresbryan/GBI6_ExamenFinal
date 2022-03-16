@@ -88,6 +88,14 @@ df
 
 ```{r funcion_long}
 # Escriba aquí la función long_df
+long_df <- function(df) {
+  library(tidyr)
+  library(dplyr)
+  df$dataset <- as.factor(df$dataset)
+  df_l <- gather(df, gen, expresion_level, GATA3, PTEN, XBP1, ESR1, MUC1, FN1, GAPDH, factor_key=TRUE)
+  df_l2 <- select(df_l, -bcr_patient_barcode)
+  return (df_l2)
+}
 
 
 ```
