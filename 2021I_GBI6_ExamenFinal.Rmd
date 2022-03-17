@@ -121,7 +121,7 @@ cancer_mama <- prueba %>% group_by(gen) %>% mutate(row = row_number()) %>%
   select(-row)
 
 descr(cancer_mama) %>% tab_df(title = "Estadistica descriptiva del cancer de MAMA y su nivel de expresion de los diferentes genes",
-                              file = "mRNA_expr_summary.doc") 
+                              file = "C:/Users/Pixel PC/Documents/Bioinformatica/examen final/GBI6_ExamenFinal/resultados/mRNA_expr_summary.doc") 
 
 ```
 
@@ -179,7 +179,7 @@ cancertype_boxplots
 ```{r boxplot3}
 # Escriba el código para guardar la tercera figura de la lista. 
 cancertype_boxplots[3]
-ggsave("boxplot3.png", width = 6, height = 8, dpi = 300)
+ggsave("C:/Users/Pixel PC/Documents/Bioinformatica/examen final/GBI6_ExamenFinal/resultados/boxplot3.png", width = 6, height = 8, dpi = 300)
 
 
 ```
@@ -348,10 +348,15 @@ graficos_cancer <- reg_gen_expression("GATA3")
 
 graficos_cancer[[5]][[2]]
 
-ggsave("regresion11.pdf", width = 6, height = 8, dpi = 300)
+ggsave("C:/Users/Pixel PC/Documents/Bioinformatica/examen final/GBI6_ExamenFinal/regresion11.pdf", width = 6, height = 8, dpi = 300)
+
+
+
 
 
 ```
+
+
 
 
 ### [1 PUNTO] 2.7. Interprete los resultados de las figuras ```boxplot3.png``` y ```regresion11.pdf```.
