@@ -14,6 +14,8 @@ output:
       smooth_scroll: yes
 ---
 
+![](./img/ikiam.png)
+
 **Bienvenidos al examen final de GBI6 - Bioinformática.**
 
 # CONTENIDO DE LA EVALUACIÓN
@@ -130,6 +132,7 @@ descr(cancer_mama) %>% tab_df(title = "Estadistica descriptiva del cancer de MAM
 
 ```{tex}
 # Escriba aquí su interpretación 
+##En las tablas obtenidas se puede observar cada elemento, agrupado de acuerdo a el tipo de cancer y el nivel de expresion de cada gen. Se puede visualizar> varibale, tipo, numero de datos o muestras, la media, la moda, el rango.
 
 
 ```
@@ -179,7 +182,7 @@ cancertype_boxplots
 ```{r boxplot3}
 # Escriba el código para guardar la tercera figura de la lista. 
 cancertype_boxplots[3]
-ggsave("C:/Users/Pixel PC/Documents/Bioinformatica/examen final/GBI6_ExamenFinal/resultados/boxplot3.png", width = 6, height = 8, dpi = 300)
+ggsave("resultados/boxplot3.png", width = 6, height = 8, dpi = 300)
 
 
 ```
@@ -348,23 +351,21 @@ graficos_cancer <- reg_gen_expression("GATA3")
 
 graficos_cancer[[5]][[2]]
 
-ggsave("C:/Users/Pixel PC/Documents/Bioinformatica/examen final/GBI6_ExamenFinal/regresion11.pdf", width = 6, height = 8, dpi = 300)
-
-
-
+ggsave("resultados/regresion11.pdf", width = 6, height = 8, dpi = 300)
 
 
 ```
-
-
 
 
 ### [1 PUNTO] 2.7. Interprete los resultados de las figuras ```boxplot3.png``` y ```regresion11.pdf```.
 
 ```{tex}
 # Esciba aquí su intepretación
+# en el boxplot se puede observar el nivel del expresion para el tipo de cancer con codigo KIPR o sea el Carcinoma renal de células papilares.
 
 ```
 
 ## 3. CONTROL DE LA VERSIÓN [1 PUNTO]. Se verficará en ell repositorio de GitHub. 
+
+
 
