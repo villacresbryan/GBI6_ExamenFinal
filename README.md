@@ -8,7 +8,7 @@
 - Nombre del dispositivo: DESKTOP_SU29NL
 - Procesador:  Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz   2.11 GHz
 - RAM instalda: 8,00 GB (7,78 GB usable) 
-# librerias usadas
+# Librerias usadas
 - ggplot2
 - sjPlot
 - sjmisc
