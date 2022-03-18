@@ -362,7 +362,7 @@ ggsave("resultados/regresion11.pdf", width = 6, height = 8, dpi = 300)
 ```{tex}
 # Esciba aquí su intepretación
 # en el boxplot se puede observar el nivel del expresion para el tipo de cancer con codigo KIPR o sea el Carcinoma renal de células papilares.
-
+#en el regresion11.pdf  se puede ver una comparacion el gen gata 3 con el gen fn1, donde se puede ver que el gen fn1 es mas agresivo debido que tiene mas puntos negros. 
 ```
 
 ## 3. CONTROL DE LA VERSIÓN [1 PUNTO]. Se verficará en ell repositorio de GitHub. 
